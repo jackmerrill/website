@@ -11,7 +11,8 @@ import {
   Box,
   Tooltip,
   Icon,
-  StackDivider
+  StackDivider,
+  useColorMode
 } from '@chakra-ui/react'
 import { Adobeillustrator, Affinitydesigner, Html5, NextDotJs, Javascript, Python } from '@icons-pack/react-simple-icons'
 import { CheckCircleIcon, LinkIcon } from '@chakra-ui/icons'
@@ -50,41 +51,47 @@ function Programming() {
   </>
 }
 
-const Index = () => (
-  <>
-    <Container height="100vh">
-      <Hero />
-      <Main>
-        <Stack align="center" direction={["column", "row"]} divider={<StackDivider />}>
-          <Tooltip hasArrow label={<GDesign />} bg="gray.700" color="black">
-            <Text fontSize="200%" fontWeight="bold">
-              Graphic Designer
-            </Text>
-          </Tooltip>
-          <Tooltip hasArrow label={<UIDesign />} bg="gray.700" color="black">
-            <Text fontSize="200%" fontWeight="bold">
-              UI Designer
-            </Text>
-          </Tooltip>
-          <Tooltip hasArrow label={<Programming />} bg="gray.700" color="black">
-            <Text fontSize="200%" fontWeight="bold">
-              Programmer
-            </Text>
-          </Tooltip>
-        </Stack>
 
-      </Main>
+const Index = () => {
+  const { colorMode } = useColorMode()
 
+  const bgColor = { light: 'gray.50', dark: 'gray.900' }
 
-    </Container>
-    <Header />
-    <Container>
-      <Footer>
-        <Text textAlign="center">Copyright 2021 Jack Merrill<br />Made with <span color="red.300">❤️</span> in Illinois</Text>
-        <DarkModeSwitch />
-      </Footer>
-    </Container>
-  </>
-)
+  const color = { light: 'white', dark: 'white' }
+
+  return (
+    <>
+      <Container height="100vh">
+        <Hero />
+        <Main>
+          <Stack align="center" direction={["column", "row"]} divider={<StackDivider />}>
+            <Tooltip hasArrow label={<GDesign />} bg="gray.700" color="black">
+              <Text fontSize="200%" fontWeight="bold">
+                Graphic Designer
+              </Text>
+            </Tooltip>
+            <Tooltip hasArrow label={<UIDesign />} bg="gray.700" color="black">
+              <Text fontSize="200%" fontWeight="bold">
+                UI Designer
+              </Text>
+            </Tooltip>
+            <Tooltip hasArrow label={<Programming />} bg="gray.700" color="black">
+              <Text fontSize="200%" fontWeight="bold">
+                Programmer
+              </Text>
+            </Tooltip>
+          </Stack>
+        </Main>
+      </Container>
+      <Header />
+      <Container>
+        <Footer>
+          <Text textAlign="center" color={color[colorMode]}>Copyright 2021 Jack Merrill<br />Made with <span color="red.300">❤️</span> in Illinois</Text>
+          <DarkModeSwitch />
+        </Footer>
+      </Container>
+    </>
+  )
+}
 
 export default Index

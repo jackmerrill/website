@@ -5,12 +5,12 @@ export const Hero = () => (
     <Heading 
       fontSize="8xl"
       bgGradient="linear(to-l, #7928CA,#FF0080)"
-      className="animated-gradient"
       bgClip="text"
       fontFamily="Inter"
       fontWeight="extrabold"
       textAlign="center"
       padding="16px"
+      mb="5rem"
     >Jack Merrill</Heading>
   </Flex>
 )
